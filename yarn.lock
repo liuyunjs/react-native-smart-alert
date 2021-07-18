@@ -1251,6 +1251,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz#4ba8ddb720221f432e443bd5f9117fd22cfd4762"
@@ -3234,7 +3242,7 @@ hey-listen@^1.0.8:
   resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
   integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
-hoist-non-react-statics@^3.3.2:
+hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -5417,14 +5425,15 @@ react-native-reanimated@^1.13.3:
   dependencies:
     fbjs "^1.0.0"
 
-react-native-smart-modal@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-smart-modal/-/react-native-smart-modal-1.0.3.tgz#c676a084c5eccb353fdaf54530a1e1caaa887a09"
-  integrity sha512-uMuhYeY9J1riPoV4XRsunHQ6HjbUXcg5/cf8wbmRvg7ORJt6IxHoW5hMrgiMbygiCb5dqcd2DXVSaxn2bscw6g==
+react-native-smart-modal@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-smart-modal/-/react-native-smart-modal-1.0.6.tgz#9b5ddb746abf206c8d6fb86b0f970d40e5175b07"
+  integrity sha512-EWlmbNRo+BT1Nk/Wr1apoVkKPnDEPO6W1hVfQlF9mWTT4AD0Lp0kPrOZoz5zTYhunCRh2gV6FuPUmBUhLRwbIQ==
   dependencies:
     "@liuyunjs/hooks" "^1.1.0-beta2"
     react-native-portal-view "^1.0.3"
     rmotion "^0.0.4"
+    rn-mask "^0.0.1"
 
 react-native@0.64.1:
   version "0.64.1"
@@ -5745,12 +5754,29 @@ rmotion@^0.0.4:
     framer-motion "^4.1.17"
     hoist-non-react-statics "^3.3.2"
 
-rn-divide@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/rn-divide/-/rn-divide-0.0.3.tgz#fa6144ea7f63d57dd4b777e4da28a50066eebd10"
-  integrity sha512-lpX7RF82vN41M3Zgt7seNleAKaPTvN5IjgXlzvpDlVUsK1JHeL0sRYNgsYJIbAO9VtwjNmgoxiALW2i1G3Aelw==
+rn-darkly@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/rn-darkly/-/rn-darkly-0.0.6.tgz#d1556a7aeec0000b5d515044c3dbff0fc7d2ec6f"
+  integrity sha512-33j1viMvA1xklv4hYf4ap2/bZX0FejCyusMY0eS8w8Rp+3dX4Z3rRt5MWvrNjcYonA4WyrVQMLJ6dXUsEJ14EQ==
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.1"
+    hoist-non-react-statics "^3.3.2"
+
+rn-divide@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/rn-divide/-/rn-divide-0.0.5.tgz#dca0cdfe9f45ee9c34e961386521883b2f30d75c"
+  integrity sha512-eT4rBaHIIR/z/kfrgJ34vequV+uBzgV0bR7dQkSY0rvKEaBcGUvJSy65e1nDFoTjONLAvL/ijAnXVeGhkXHOXg==
   dependencies:
     "@liuyunjs/utils" "^1.0.0"
+    rn-darkly "^0.0.6"
+
+rn-mask@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/rn-mask/-/rn-mask-0.0.1.tgz#34913a66a180be66b6d3982868628866d4823d00"
+  integrity sha512-NKRmU84YDZrX2R149sgt/Fv7ZZUpy5e8xbB0aOxniuKp6b5DXpIUlCx7iX6kU5phLC9VfFxnNwyyQIhrd5e5+w==
+  dependencies:
+    rmotion "^0.0.4"
+    rn-darkly "^0.0.6"
 
 rsvp@^4.8.4:
   version "4.8.5"

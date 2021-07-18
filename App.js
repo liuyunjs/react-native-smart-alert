@@ -1,11 +1,13 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import { DarklyText } from 'rn-darkly';
 import { Alert } from './library/main';
 
 export default function App() {
   return (
     <SafeAreaView>
-      <Text
+      <DarklyText
+        darkStyle={{ color: '#ddd' }}
         onPress={() => {
           Alert.alert('标题标题', '描述描述描述', [
             {
@@ -13,12 +15,13 @@ export default function App() {
             },
             {
               text: '确定',
+              onPress() {},
             },
           ]);
         }}
         style={{ fontSize: 20 }}>
         show alert
-      </Text>
+      </DarklyText>
     </SafeAreaView>
   );
 }
