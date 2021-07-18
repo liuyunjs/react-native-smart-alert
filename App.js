@@ -9,7 +9,7 @@ export default function App() {
       <DarklyText
         darkStyle={{ color: '#ddd' }}
         onPress={() => {
-          Alert.alert('标题标题', '描述描述描述', [
+          Alert.alert('标题标题', '描述描述描述'.repeat(400), [
             {
               text: '取消',
             },

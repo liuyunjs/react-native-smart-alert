@@ -56,7 +56,8 @@ AlertProps) => {
         </DarklyText>
       )}
       <ScrollView
-        bounces={false}
+        alwaysBounceHorizontal={false}
+        alwaysBounceVertical={false}
         style={{
           maxHeight:
             height -
