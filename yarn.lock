@@ -5425,10 +5425,10 @@ react-native-reanimated@^1.13.3:
   dependencies:
     fbjs "^1.0.0"
 
-react-native-smart-modal@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/react-native-smart-modal/-/react-native-smart-modal-1.0.6.tgz#9b5ddb746abf206c8d6fb86b0f970d40e5175b07"
-  integrity sha512-EWlmbNRo+BT1Nk/Wr1apoVkKPnDEPO6W1hVfQlF9mWTT4AD0Lp0kPrOZoz5zTYhunCRh2gV6FuPUmBUhLRwbIQ==
+react-native-smart-modal@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-smart-modal/-/react-native-smart-modal-1.0.7.tgz#9c2aaf77601786abdef106354824f5948857a066"
+  integrity sha512-Kag6dYm9QllWWWVf8EzV/mJQVhkF7UdB91E/9khFLuJkovU2yAn500UqnL4DqGMEVThpG5Bvon3wqoOxdZcd5Q==
   dependencies:
     "@liuyunjs/hooks" "^1.1.0-beta2"
     react-native-portal-view "^1.0.3"
@@ -5762,10 +5762,10 @@ rn-darkly@^0.0.6:
     "@types/hoist-non-react-statics" "^3.3.1"
     hoist-non-react-statics "^3.3.2"
 
-rn-divide@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/rn-divide/-/rn-divide-0.0.5.tgz#dca0cdfe9f45ee9c34e961386521883b2f30d75c"
-  integrity sha512-eT4rBaHIIR/z/kfrgJ34vequV+uBzgV0bR7dQkSY0rvKEaBcGUvJSy65e1nDFoTjONLAvL/ijAnXVeGhkXHOXg==
+rn-divide@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/rn-divide/-/rn-divide-0.0.6.tgz#1473ac8de6e631f8d34ee0b61f7a3dd55980dbf9"
+  integrity sha512-W0gpF1pS3sOycSYOUr0yiq5eOZQRyEWR31+Tg0SRstbq1leKVd4Xgg0vIwA3aZlRCqIg1h4Y1kwttRADK199uw==
   dependencies:
     "@liuyunjs/utils" "^1.0.0"
     rn-darkly "^0.0.6"
