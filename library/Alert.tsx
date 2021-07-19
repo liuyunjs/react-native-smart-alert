@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
   ViewStyle,
   ScrollView,
   StyleProp,
-  TouchableOpacity,
   Dimensions,
   TextStyle,
 } from 'react-native';
@@ -15,6 +13,8 @@ import {
 } from 'react-native-iphone-x-helper';
 import { Divide } from 'rn-divide';
 import { DarklyView, DarklyText } from 'rn-darkly';
+import { styles } from './styles';
+import { AlertAction } from './AlertAction';
 
 export type Action = {
   text: string;
@@ -34,15 +34,14 @@ export type AlertProps = {
 
 const { height, width } = Dimensions.get('window');
 
-export const Alert = ({
+export const Alert: React.FC<AlertProps> = ({
   style,
   actions,
   message,
   title,
   children,
   onRequestClose,
-}: // ...rest
-AlertProps) => {
+}) => {
   const count = actions.length;
   const isHorizontal = count < 3;
 
@@ -77,101 +76,19 @@ AlertProps) => {
       <View style={isHorizontal ? styles.hBtnGroup : styles.vBtnGroup}>
         {actions.map((action, index) => {
           return (
-            <React.Fragment key={action.text}>
-              {!!index && (
-                <Divide
-                  horizontal={!isHorizontal}
-                  offset={isHorizontal ? 5 : 10}
-                />
-              )}
-              <TouchableOpacity
-                onPress={() => {
-                  onRequestClose?.();
-                  action.onPress?.();
-                }}
-                style={isHorizontal ? styles.hBtn : styles.vBtn}>
-                <DarklyText
-                  darkStyle={[styles.darkBtnText, action.darkStyle]}
-                  style={[styles.btnText, action.style]}>
-                  {action.text}
-                </DarklyText>
-              </TouchableOpacity>
-            </React.Fragment>
+            <AlertAction
+              {...action}
+              divideVisible={!!index}
+              horizontal={isHorizontal}
+              onPress={() => {
+                onRequestClose?.();
+                action.onPress?.();
+              }}
+              key={action.text}
+            />
           );
         })}
       </View>
     </DarklyView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: width * 0.88,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
-
-  darkContainer: {
-    backgroundColor: '#333',
-  },
-
-  title: {
-    fontSize: 22,
-    fontWeight: '500',
-    color: '#333',
-    marginTop: 34,
-    marginBottom: 20,
-    marginHorizontal: 15,
-  },
-
-  darkTitle: {
-    color: '#eee',
-  },
-
-  message: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 14,
-    marginBottom: 28,
-    marginHorizontal: 15,
-    lineHeight: 20,
-  },
-
-  darkMessage: {
-    color: '#bbb',
-  },
-
-  hBtnGroup: {
-    flexDirection: 'row',
-    height: 60,
-  },
-
-  vBtnGroup: {
-    width: '100%',
-  },
-
-  hBtn: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 60,
-    flex: 1,
-  },
-
-  vBtn: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: 50,
-    paddingHorizontal: 15,
-  },
-
-  btnText: {
-    fontSize: 18,
-    color: '#555',
-  },
-
-  darkBtnText: {
-    color: '#ddd',
-  },
-});

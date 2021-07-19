@@ -5413,10 +5413,10 @@ react-native-iphone-x-helper@^1.3.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
 
-react-native-portal-view@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-portal-view/-/react-native-portal-view-1.0.3.tgz#d731bbb86c5050b5b653185d6ad5793c419b32a7"
-  integrity sha512-DEUBmues1/gtdgly+Vi6C7wXYOamHN+KWDL3Erd4mPIf5lMSqJVmKEVsNC58Oxw6GoJP6lytDpmwproaPpoJmQ==
+react-native-portal-view@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-portal-view/-/react-native-portal-view-1.0.5.tgz#8690d8c05c46e3969fd78073b16a5f4317a848eb"
+  integrity sha512-iP05sV7RkdDoY6+Tpq67cc0QIDA4WNeNn2azn0z4VRyQTjDLf6Z0wJEhXwS/ioGbxXLkKATvSz+f+1oWir7FVw==
 
 react-native-reanimated@^1.13.3:
   version "1.13.3"
@@ -5425,13 +5425,13 @@ react-native-reanimated@^1.13.3:
   dependencies:
     fbjs "^1.0.0"
 
-react-native-smart-modal@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/react-native-smart-modal/-/react-native-smart-modal-1.0.7.tgz#9c2aaf77601786abdef106354824f5948857a066"
-  integrity sha512-Kag6dYm9QllWWWVf8EzV/mJQVhkF7UdB91E/9khFLuJkovU2yAn500UqnL4DqGMEVThpG5Bvon3wqoOxdZcd5Q==
+react-native-smart-modal@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-smart-modal/-/react-native-smart-modal-1.0.8.tgz#1ff6e321827996afc9b8f4039ead3c2d013acec8"
+  integrity sha512-nf4gRFRMIhmS+D9zAZCGnDGMnVeMxC5f5lHvV6WvInOJ8Jx1iydZ8+5bbaI4Bb8Yngf53uiCnHZ/FwuVFBpeyg==
   dependencies:
     "@liuyunjs/hooks" "^1.1.0-beta2"
-    react-native-portal-view "^1.0.3"
+    react-native-portal-view "^1.0.5"
     rmotion "^0.0.4"
     rn-mask "^0.0.1"
 
@@ -6492,10 +6492,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^3.8.3:
-  version "3.9.10"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
-  integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
+typescript@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 ua-parser-js@^0.7.18:
   version "0.7.28"
