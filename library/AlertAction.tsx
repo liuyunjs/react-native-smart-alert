@@ -14,7 +14,7 @@ export const AlertAction: React.FC<{
 }> = ({ horizontal, text, style, darkStyle, divideVisible, onPress }) => {
   return (
     <Divide
-      horizontal={horizontal}
+      horizontal={!horizontal}
       style={horizontal ? styles.hItem : styles.vItem}
       visible={divideVisible}>
       <DarklyTouchableHighlight

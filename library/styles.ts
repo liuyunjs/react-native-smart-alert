@@ -66,10 +66,10 @@ export const styles = StyleSheet.create({
   hItem: {
     height: 60,
     flex: 1,
-    flexDirection: 'column-reverse',
+    flexDirection: 'row-reverse',
   },
   vItem: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'column-reverse',
     width: '100%',
     height: 50,
   },

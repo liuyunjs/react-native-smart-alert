@@ -22,6 +22,12 @@ export default function App() {
                 setVisible(true);
               },
             },
+            {
+              text: '确定2',
+              onPress() {
+                setVisible(true);
+              },
+            },
           ]);
         }}
         style={{ fontSize: 20 }}>
