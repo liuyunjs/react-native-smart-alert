@@ -32,7 +32,7 @@ export type AlertProps = {
   onRequestClose: () => void;
 };
 
-const { height, width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 export const Alert: React.FC<AlertProps> = ({
   style,
