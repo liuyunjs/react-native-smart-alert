@@ -1,17 +1,21 @@
-import React from 'react';
+import * as React from 'react';
 // @ts-ignore
 import { Easing, EasingNode } from 'react-native-reanimated';
-import { Modal } from 'react-native-smart-modal';
-import { ModalInternalProps } from 'react-native-smart-modal/dist/types';
+import { Modal, ModalInternalProps } from 'react-native-smart-modal';
 import { Alert as AlertView, Action } from './Alert';
+
+export { AlertAction } from './AlertAction';
 
 const E: any = EasingNode || Easing;
 
 const animConf = { easing: E.inOut(E.circle) };
 const animation: ModalInternalProps['animation'] = {
   from: { opacity: 0.7, scale: 0.1 },
-  animate: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.5 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+  },
+  exit: { opacity: 0, scale: 0.3 },
 };
 
 const namespace = 'Alert' + Math.random().toString(32);
@@ -47,6 +51,8 @@ export const alert = (title: string, message: string, actions: Action[]) => {
   });
   return key;
 };
+
+export { AlertView };
 
 export const Alert = {
   hide,

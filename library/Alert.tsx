@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   View,
   ViewStyle,
@@ -20,7 +20,7 @@ export type Action = {
   text: string;
   onPress?: () => void;
   style?: StyleProp<TextStyle>;
-  darkStyle?: StyleProp<TextStyle>;
+  dark_style?: StyleProp<TextStyle>;
 };
 
 export type AlertProps = {
@@ -47,10 +47,10 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <DarklyView
-      darkStyle={styles.darkContainer}
+      dark_style={styles.darkContainer}
       style={[styles.container, style]}>
       {!!title && (
-        <DarklyText darkStyle={styles.darkTitle} style={styles.title}>
+        <DarklyText dark_style={styles.darkTitle} style={styles.title}>
           {title}
         </DarklyText>
       )}
@@ -58,6 +58,7 @@ export const Alert: React.FC<AlertProps> = ({
         alwaysBounceHorizontal={false}
         alwaysBounceVertical={false}
         style={{
+          width: '100%',
           maxHeight:
             height -
             (title ? 76 : 0) -
@@ -67,7 +68,7 @@ export const Alert: React.FC<AlertProps> = ({
         }}>
         {children}
         {!!message && (
-          <DarklyText darkStyle={styles.darkMessage} style={styles.message}>
+          <DarklyText dark_style={styles.darkMessage} style={styles.message}>
             {message}
           </DarklyText>
         )}

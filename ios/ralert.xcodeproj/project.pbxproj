@@ -14,6 +14,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A7B75DE51F839C40AD97B307 /* libPods-ralert-ralertTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4364CF1E68D820F4EAB35FF /* libPods-ralert-ralertTests.a */; };
 		D6718443A592DF3C05A94F9D /* libPods-ralert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72218B28A337E891BE21E9A7 /* libPods-ralert.a */; };
+		DF52A2792844AD4E0027DE71 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52A2782844AD4E0027DE71 /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		72218B28A337E891BE21E9A7 /* libPods-ralert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ralert.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ralert/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4364CF1E68D820F4EAB35FF /* libPods-ralert-ralertTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ralert-ralertTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF52A2772844AD4E0027DE71 /* ralert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ralert-Bridging-Header.h"; sourceTree = "<group>"; };
+		DF52A2782844AD4E0027DE71 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -92,6 +95,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				DF52A2782844AD4E0027DE71 /* App.swift */,
+				DF52A2772844AD4E0027DE71 /* ralert-Bridging-Header.h */,
 			);
 			name = ralert;
 			sourceTree = "<group>";
@@ -104,7 +109,6 @@
 				5F7F5091E422E0CFD5732489 /* Pods-ralert-ralertTests.debug.xcconfig */,
 				691CDE6E4388EEFB3967D532 /* Pods-ralert-ralertTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,7 +212,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -411,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF52A2792844AD4E0027DE71 /* App.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -431,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F7F5091E422E0CFD5732489 /* Pods-ralert-ralertTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -458,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 691CDE6E4388EEFB3967D532 /* Pods-ralert-ralertTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = ralertTests/Info.plist;
@@ -498,6 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ralert;
+				SWIFT_OBJC_BRIDGING_HEADER = "ralert-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -523,6 +531,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ralert;
+				SWIFT_OBJC_BRIDGING_HEADER = "ralert-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
