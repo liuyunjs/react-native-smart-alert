@@ -13,6 +13,11 @@ import {
 } from 'react-native-iphone-x-helper';
 import { Divide } from 'rn-divide';
 import { DarklyView, DarklyText } from 'rn-darkly';
+import {
+  ModalInternal,
+  ModalInternalProps,
+  withModal,
+} from 'react-native-smart-modal';
 import { styles } from './styles';
 import { AlertAction } from './AlertAction';
 
@@ -29,28 +34,34 @@ export type AlertProps = {
   title?: string;
   message?: string;
   children?: React.ReactNode;
-  onRequestClose: () => void;
+  onRequestClose?: () => void;
+  forceDark?: boolean;
 };
 
 const { height } = Dimensions.get('window');
 
-export const Alert: React.FC<AlertProps> = ({
+const AlertInternal: React.FC<AlertProps> = ({
   style,
   actions,
   message,
   title,
   children,
   onRequestClose,
+  forceDark,
 }) => {
   const count = actions.length;
   const isHorizontal = count < 3;
 
   return (
     <DarklyView
+      forceDark={forceDark}
       dark_style={styles.darkContainer}
       style={[styles.container, style]}>
       {!!title && (
-        <DarklyText dark_style={styles.darkTitle} style={styles.title}>
+        <DarklyText
+          forceDark={forceDark}
+          dark_style={styles.darkTitle}
+          style={styles.title}>
           {title}
         </DarklyText>
       )}
@@ -68,17 +79,21 @@ export const Alert: React.FC<AlertProps> = ({
         }}>
         {children}
         {!!message && (
-          <DarklyText dark_style={styles.darkMessage} style={styles.message}>
+          <DarklyText
+            forceDark={forceDark}
+            dark_style={styles.darkMessage}
+            style={styles.message}>
             {message}
           </DarklyText>
         )}
       </ScrollView>
-      <Divide />
+      <Divide forceDark={forceDark} />
       <View style={isHorizontal ? styles.hBtnGroup : styles.vBtnGroup}>
         {actions.map((action, index) => {
           return (
             <AlertAction
               {...action}
+              forceDark={forceDark}
               divideVisible={!!index}
               horizontal={isHorizontal}
               onPress={() => {
@@ -93,3 +108,26 @@ export const Alert: React.FC<AlertProps> = ({
     </DarklyView>
   );
 };
+
+export const Alert = withModal(function Alert({
+  style,
+  actions,
+  message,
+  title,
+  children,
+  ...rest
+}: AlertProps & ModalInternalProps) {
+  return (
+    <ModalInternal {...rest}>
+      <AlertInternal
+        forceDark={rest.forceDark}
+        message={message}
+        style={style}
+        onRequestClose={rest.onRequestClose}
+        actions={actions}
+        title={title}>
+        {children}
+      </AlertInternal>
+    </ModalInternal>
+  );
+});

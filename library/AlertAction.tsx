@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { Divide } from 'rn-divide';
 import { DarklyText } from 'rn-darkly';
-import * as React from 'react';
 import { StyleProp, TextStyle, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
@@ -11,9 +11,19 @@ export const AlertAction: React.FC<{
   onPress: () => void;
   divideVisible?: boolean;
   horizontal: boolean;
-}> = ({ horizontal, text, style, dark_style, divideVisible, onPress }) => {
+  forceDark?: boolean;
+}> = ({
+  horizontal,
+  text,
+  forceDark,
+  style,
+  dark_style,
+  divideVisible,
+  onPress,
+}) => {
   return (
     <Divide
+      forceDark={forceDark}
       horizontal={!horizontal}
       style={horizontal ? styles.hItem : styles.vItem}
       visible={divideVisible}>
@@ -22,6 +32,7 @@ export const AlertAction: React.FC<{
         onPress={onPress}
         style={horizontal ? styles.hBtn : styles.vBtn}>
         <DarklyText
+          forceDark={forceDark}
           dark_style={[styles.darkBtnText, dark_style]}
           style={[styles.btnText, style]}>
           {text}

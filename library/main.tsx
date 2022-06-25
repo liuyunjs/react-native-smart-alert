@@ -1,14 +1,15 @@
-import * as React from 'react';
 // @ts-ignore
 import { Easing, EasingNode } from 'react-native-reanimated';
-import { Modal, ModalInternalProps } from 'react-native-smart-modal';
-import { Alert as AlertView, Action } from './Alert';
+import { ModalInternalProps } from 'react-native-smart-modal';
+import { Alert as AlertView, AlertProps, Action } from './Alert';
 
 export { AlertAction } from './AlertAction';
 
 const E: any = EasingNode || Easing;
 
 const animConf = { easing: E.inOut(E.circle) };
+const namespace = 'Alert' + Math.random().toString(32);
+
 const animation: ModalInternalProps['animation'] = {
   from: { opacity: 0.7, scale: 0.1 },
   animate: {
@@ -18,44 +19,50 @@ const animation: ModalInternalProps['animation'] = {
   exit: { opacity: 0, scale: 0.3 },
 };
 
-const namespace = 'Alert' + Math.random().toString(32);
+const withDefaultProps = (
+  props: AlertProps & ModalInternalProps,
+): AlertProps & ModalInternalProps => ({
+  maskCloseable: false,
+  backHandlerType: 'disabled',
+  keyboardDismissWillHide: true,
+  containerStyle: { zIndex: 1000 },
+  ...props,
+  verticalLayout: 'center',
+  horizontalLayout: 'center',
+  animation,
+  animationConf: animConf,
+});
 
-export const custom = (props: ModalInternalProps) => {
-  return Modal.add(namespace, {
-    maskCloseable: false,
-    backHandlerType: 'disabled',
-    keyboardDismissWillHide: true,
-    containerStyle: { zIndex: 1000 },
-    ...props,
-    verticalLayout: 'center',
-    horizontalLayout: 'center',
-    animation,
-    animationConf: animConf,
+const {
+  hide: hideInternal,
+  show: showInternal,
+  update: updateInternal,
+} = AlertView;
+
+export const show = (props: AlertProps & ModalInternalProps) =>
+  showInternal(namespace, withDefaultProps(props));
+
+export const hide = (key: string) => hideInternal(namespace, key);
+
+export const update = (props: AlertProps & ModalInternalProps) =>
+  updateInternal(namespace, withDefaultProps(props));
+
+export const alert = (title: string, message: string, actions: Action[]) =>
+  show({
+    actions,
+    title,
+    message,
   });
-};
 
-export const hide = (key: string) => {
-  Modal.remove(namespace, key);
-};
-
-export const alert = (title: string, message: string, actions: Action[]) => {
-  const key = custom({
-    children: (
-      <AlertView
-        onRequestClose={() => hide(key)}
-        title={title}
-        message={message}
-        actions={actions}
-      />
-    ),
-  });
-  return key;
-};
-
-export { AlertView };
-
-export const Alert = {
-  hide,
+export const Alert = Object.assign(AlertView, {
   alert,
-  custom,
-};
+  hide,
+  /**
+   * @deprecated 请使用show方法调用
+   */
+  custom: show,
+  update,
+  show,
+});
+
+Alert.defaultProps = withDefaultProps({ actions: [] });

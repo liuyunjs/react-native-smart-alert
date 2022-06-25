@@ -1,6 +1,6 @@
 {
   "name": "rn-smart-alert",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": false,
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "react-native-iphone-x-helper": "*",
-    "react-native-smart-modal": "^2",
+    "react-native-smart-modal": "^2.1.2",
     "rn-darkly": "^2",
     "rn-divide": "^2"
   },
