@@ -1,51 +1,18 @@
-// @ts-ignore
-import { Easing, EasingNode } from 'react-native-reanimated';
-import { ModalInternalProps } from 'react-native-smart-modal';
-import { Alert as AlertView, AlertProps, Action } from './Alert';
+import { Alert, Action } from './Alert';
 
 export { AlertAction } from './AlertAction';
 
-const E: any = EasingNode || Easing;
+export const { hide, show, update } = Alert;
 
-const animConf = { easing: E.inOut(E.circle) };
-const namespace = 'Alert' + Math.random().toString(32);
-
-const animation: ModalInternalProps['animation'] = {
-  from: { opacity: 0.7, scale: 0.1 },
-  animate: {
-    opacity: 1,
-    scale: 1,
-  },
-  exit: { opacity: 0, scale: 0.3 },
+/**
+ * @deprecated 请使用show方法调用
+ */
+// @ts-ignore
+export const custom: typeof show = (...args) => {
+  console.warn('[rn-smart-alert]: custom 方法将会被遗弃，请使用 show 方法调用');
+  // @ts-ignore
+  return show(...args);
 };
-
-const withDefaultProps = (
-  props: AlertProps & ModalInternalProps,
-): AlertProps & ModalInternalProps => ({
-  maskCloseable: false,
-  backHandlerType: 'disabled',
-  keyboardDismissWillHide: true,
-  containerStyle: { zIndex: 1000 },
-  ...props,
-  verticalLayout: 'center',
-  horizontalLayout: 'center',
-  animation,
-  animationConf: animConf,
-});
-
-const {
-  hide: hideInternal,
-  show: showInternal,
-  update: updateInternal,
-} = AlertView;
-
-export const show = (props: AlertProps & ModalInternalProps) =>
-  showInternal(namespace, withDefaultProps(props));
-
-export const hide = (key: string) => hideInternal(namespace, key);
-
-export const update = (props: AlertProps & ModalInternalProps) =>
-  updateInternal(namespace, withDefaultProps(props));
 
 export const alert = (title: string, message: string, actions: Action[]) =>
   show({
@@ -54,15 +21,14 @@ export const alert = (title: string, message: string, actions: Action[]) =>
     message,
   });
 
-export const Alert = Object.assign(AlertView, {
+const ExportAlert = Object.assign(Alert, {
   alert,
-  hide,
+
   /**
    * @deprecated 请使用show方法调用
    */
-  custom: show,
-  update,
-  show,
+  custom,
 });
 
-Alert.defaultProps = withDefaultProps({ actions: [] });
+export { ExportAlert as Alert };
+export default ExportAlert;

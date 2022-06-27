@@ -7,6 +7,8 @@ import {
   Dimensions,
   TextStyle,
 } from 'react-native';
+// @ts-ignore
+import { Easing, EasingNode } from 'react-native-reanimated';
 import {
   getBottomSpace,
   getStatusBarHeight,
@@ -109,16 +111,38 @@ const AlertInternal: React.FC<AlertProps> = ({
   );
 };
 
-export const Alert = withModal(function Alert({
-  style,
-  actions,
-  message,
-  title,
-  children,
-  ...rest
-}: AlertProps & ModalInternalProps) {
+const E: any = EasingNode || Easing;
+const animConf = { easing: E.inOut(E.circle) };
+
+const animation: ModalInternalProps['animation'] = {
+  from: { opacity: 0.7, scale: 0.1 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+  },
+  exit: { opacity: 0, scale: 0.3 },
+};
+
+const Alert: React.FC<
+  AlertProps &
+    Omit<
+      ModalInternalProps,
+      | 'verticalLayout'
+      | 'horizontalLayout'
+      | 'animation'
+      | 'animationConf'
+      | 'animationIn'
+      | 'animationOut'
+    >
+> = ({ style, actions, message, title, children, ...rest }) => {
   return (
-    <ModalInternal {...rest}>
+    <ModalInternal
+      {...rest}
+      containerStyle={[{ zIndex: 1000 }, rest.containerStyle]}
+      verticalLayout="center"
+      horizontalLayout="center"
+      animation={animation}
+      animationConf={animConf}>
       <AlertInternal
         forceDark={rest.forceDark}
         message={message}
@@ -130,4 +154,14 @@ export const Alert = withModal(function Alert({
       </AlertInternal>
     </ModalInternal>
   );
-});
+};
+
+Alert.defaultProps = {
+  maskCloseable: false,
+  backHandlerType: 'disabled',
+  keyboardDismissWillHide: true,
+};
+
+const ModalAlert = withModal(Alert);
+
+export { ModalAlert as Alert };
