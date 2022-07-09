@@ -44,7 +44,7 @@ export default function App() {
           {
             text: '确定',
             onPress() {
-              Alert.custom({
+              Alert.show({
                 title: '标题标题',
                 message: 'message',
                 actions: [
@@ -68,7 +68,7 @@ export default function App() {
           },
         ]}
         visible={visible}
-        onWillChange={setVisible}
+        onChange={setVisible}
       />
     </SafeAreaView>
   );

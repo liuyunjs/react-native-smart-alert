@@ -7,8 +7,7 @@ import {
   Dimensions,
   TextStyle,
 } from 'react-native';
-// @ts-ignore
-import { Easing, EasingNode } from 'react-native-reanimated';
+import { ZoomIn, ZoomOut } from 'react-native-reanimated';
 import {
   getBottomSpace,
   getStatusBarHeight,
@@ -41,6 +40,9 @@ export type AlertProps = {
 };
 
 const { height } = Dimensions.get('window');
+
+const animationIn = ZoomIn;
+const animationOut = ZoomOut;
 
 const AlertInternal: React.FC<AlertProps> = ({
   style,
@@ -111,28 +113,11 @@ const AlertInternal: React.FC<AlertProps> = ({
   );
 };
 
-const E: any = EasingNode || Easing;
-const animConf = { easing: E.inOut(E.circle) };
-
-const animation: ModalInternalProps['animation'] = {
-  from: { opacity: 0.7, scale: 0.1 },
-  animate: {
-    opacity: 1,
-    scale: 1,
-  },
-  exit: { opacity: 0, scale: 0.3 },
-};
-
 const Alert: React.FC<
   AlertProps &
     Omit<
       ModalInternalProps,
-      | 'verticalLayout'
-      | 'horizontalLayout'
-      | 'animation'
-      | 'animationConf'
-      | 'animationIn'
-      | 'animationOut'
+      'verticalLayout' | 'horizontalLayout' | 'animationIn' | 'animationOut'
     >
 > = ({ style, actions, message, title, children, ...rest }) => {
   return (
@@ -141,8 +126,8 @@ const Alert: React.FC<
       containerStyle={[{ zIndex: 1000 }, rest.containerStyle]}
       verticalLayout="center"
       horizontalLayout="center"
-      animation={animation}
-      animationConf={animConf}>
+      animationIn={animationIn}
+      animationOut={animationOut}>
       <AlertInternal
         forceDark={rest.forceDark}
         message={message}
